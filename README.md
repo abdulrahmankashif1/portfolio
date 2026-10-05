@@ -186,43 +186,129 @@ export const siteConfig = {
 
 ### Adding Project Screenshots
 
-1. Add your screenshot images to `public/projects/`
-2. Update the `image` field in `projects.ts` to match the filename
-3. Recommended: 1200x900px, WebP format
+1. Save your screenshots in `public/projects/`
+2. Add the `image` field to that project in `src/data/projects.ts`:
 
-### Adding Profile Photo
+```typescript
+{
+  id: "shades-theory",
+  image: "/projects/shades-theory.jpg",  // <- add this line
+  // ...rest of the object
+}
+```
 
-1. Add your photo to `public/images/abdul-rahman.jpg`
-2. Recommended: 800x1000px, WebP format
+While `image` is omitted, a styled gradient mockup is rendered automatically —
+no broken images, no 404s. See `public/projects/README.md` for specs.
 
-## Deployment (Vercel)
+### Adding Your Photo
 
-### Automatic Deployment
+1. Save your photo as `public/images/abdul-rahman.jpg`
+2. Flip the flag in `src/data/site.ts`:
 
-1. Push your code to GitHub/GitLab/Bitbucket
-2. Import the project in [Vercel](https://vercel.com/new)
-3. Vercel will auto-detect Next.js and configure build settings
-4. Add environment variables if needed (for email services)
-5. Deploy!
+```typescript
+photo: {
+  src: "/images/abdul-rahman.jpg",
+  enabled: true,   // <- flip to true
+},
+```
+
+See `public/images/README.md` for specs.
+
+### Before You Deploy
+
+1. Set your real domain in `src/data/site.ts` → `url`
+2. Add your GitHub and LinkedIn URLs in `src/data/site.ts` → `social`
+3. Commit and push — Netlify redeploys automatically
+
+## Deployment
+
+Deploy to **Netlify** or **Vercel** — both work with zero config changes.
+
+### Netlify (GitHub-based, recommended)
+
+`netlify.toml` is already committed, so Netlify picks up the right settings.
+
+**Step 1 — Create the GitHub repo**
+
+1. Go to https://github.com/new
+2. Repository name: `portfolio` (or whatever you like)
+3. Visibility: **Private** or **Public** (your choice)
+4. Do **not** tick "Add a README" — this project already has one
+5. Click **Create repository**
+
+**Step 2 — Push your code**
+
+```bash
+cd portfolio
+git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
+git branch -M main
+git push -u origin main
+```
+
+GitHub will ask for your username and a **Personal Access Token** instead of a
+password if you have 2FA on. Get a token at
+https://github.com/settings/tokens (scope: `repo`).
+
+**Step 3 — Connect to Netlify**
+
+1. Go to https://app.netlify.com/drop (or https://app.netlify.com)
+2. Sign up / sign in with your **GitHub** account
+3. Click **Add new site** → **Import an existing project**
+4. Pick your `portfolio` repo
+5. Netlify auto-detects Next.js. Verify:
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+6. Click **Deploy site**
+
+Your site will be live at `https://YOUR-SITE-NAME.netlify.app` in ~2 minutes.
+
+**Step 4 — Set your real domain**
+
+Netlify → **Domain settings** → **Add a custom domain**. DNS is handled for you
+if you use Netlify DNS.
+
+**Every push from now on auto-deploys.** Just run:
+
+```bash
+git add -A
+git commit -m "your message"
+git push
+```
+
+Netlify builds and publishes automatically. You'll get a preview URL for every
+pull request too.
+
+### Vercel
+
+1. Push to GitHub (same as Step 2 above)
+2. Import at https://vercel.com/new
+3. Framework preset: **Next.js** (auto-detected)
+4. Deploy
 
 ### Environment Variables
 
-For the contact form, add these in Vercel dashboard:
+The contact form works out of the box (it validates and returns `200`), but it
+doesn't actually send email yet. To make it live, add your provider's key in
+**Netlify → Site settings → Environment variables**, then uncomment the relevant
+block in `src/app/api/contact/route.ts`:
 
 ```env
-# For Resend
-RESEND_API_KEY=your_resend_api_key
+# Resend (recommended)
+RESEND_API_KEY=re_xxxxxxxxxxxx
 
-# For Formspree
-FORMSPREE_ENDPOINT=https://formspree.io/f/your_form_id
+# Formspree
+FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
 
-# For SendGrid
-SENDGRID_API_KEY=your_sendgrid_api_key
+# SendGrid
+SENDGRID_API_KEY=SG.xxxxx
 SENDGRID_FROM_EMAIL=verified@yourdomain.com
-SENDGRID_TO_EMAIL=your@email.com
 ```
 
-Then update `src/app/api/contact/route.ts` to use your preferred service.
+## Deploying to Netlify — the setup is already done
+
+`netlify.toml` is committed with the right build command, publish directory,
+Node version, the `@netlify/plugin-nextjs` plugin, and security headers. You only
+need to create the GitHub repo and import it — see **Deployment** above.
 
 ## Performance
 
