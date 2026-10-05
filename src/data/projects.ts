@@ -48,6 +48,7 @@ export const projects: Project[] = [
     category: "E-commerce",
     liveUrl: "https://store.alkahaf.org/",
     caseStudyUrl: "/work/alkahaf-store",
+    image: "/projects/alkahaf-store.png",
     gradient: "from-violet-500/30 via-purple-500/20 to-indigo-500/30",
     accent: "#c084fc",
     tags: ["Next.js", "E-commerce", "Management", "Technical Support"],

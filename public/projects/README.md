@@ -20,5 +20,7 @@ While `image` is omitted, the site renders a styled gradient mockup instead.
 
 ## Current projects
 
-- `shades-theory` — https://theoryshades.store/
-- `alkahaf-store` — https://store.alkahaf.org/
+- `alkahaf-store.png` — wired up (Alkahaf Store, https://store.alkahaf.org/)
+- Shades Theory screenshot still missing — save it as `shades-theory.jpg`
+  and add `image: "/projects/shades-theory.jpg"` to
+  `src/data/projects.ts`
