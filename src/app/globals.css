@@ -1,36 +1,41 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-background: #0a0a0a;
-  --color-foreground: #fafafa;
-  --color-muted: #71717a;
-  --color-border: #27272a;
+@theme {
+  /* ---------- Colour system ---------- */
+  --color-bg: #0a0a0a;
+  --color-fg: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-subtle: #71717a;
+  --color-line: rgba(255, 255, 255, 0.1);
+
   --color-accent: #6366f1;
-  --color-accent-secondary: #a855f7;
-  --color-accent-tertiary: #ec4899;
+  --color-accent-2: #a855f7;
+  --color-accent-3: #ec4899;
 
-  --font-display: var(--font-bebas-neue);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
+  /* ---------- Type ---------- */
+  --font-display: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
-  --animate-marquee-left: marquee-left 30s linear infinite;
-  --animate-marquee-right: marquee-right 30s linear infinite;
+  /* ---------- Marquee keyframes ---------- */
+  --animate-marquee-left: marquee-left var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-right: marquee-right var(--marquee-duration, 40s) linear infinite;
 
   @keyframes marquee-left {
     from {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
     to {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
   }
 
   @keyframes marquee-right {
     from {
-      transform: translateX(-50%);
+      transform: translate3d(-50%, 0, 0);
     }
     to {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
   }
 }
@@ -38,25 +43,202 @@
 :root {
   --background: #0a0a0a;
   --foreground: #fafafa;
+  --header-h: 4.5rem;
+}
+
+/* ==================================================================
+   Base
+   ================================================================== */
+
+* {
+  border-color: var(--color-line);
+}
+
+html {
+  /* Lenis drives scrolling — native smooth would fight it */
+  scroll-behavior: auto;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-html {
-  scroll-behavior: auto;
+/* Lenis recommended styles */
+html.lenis,
+html.lenis body {
+  height: auto;
 }
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: #6366f1;
+  color: #0a0a0a;
+}
+
+/* ==================================================================
+   Typography helpers
+   ================================================================== */
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  /* Bebas Neue has no true bold — fake it slightly for punch */
+  text-rendering: optimizeLegibility;
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-accent),
+    var(--color-accent-2),
+    var(--color-accent-3)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-subtle);
+}
+
+/* ==================================================================
+   Scrollbar
+   ================================================================== */
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==================================================================
+   Focus — visible only for keyboard users
+   ================================================================== */
+
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ==================================================================
+   Utilities
+   ================================================================== */
+
+/* Grain overlay — add to any positioned container */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Hairline border that reads correctly on dark */
+.hairline {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card lift */
+.lift {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Magnetic button sheen */
+.magnetic-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+.magnetic-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    100deg,
+    rgba(99, 102, 241, 0.22),
+    transparent 45%,
+    rgba(168, 85, 247, 0.22)
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.magnetic-button:hover::before {
+  opacity: 1;
+}
+
+/* Underline sweep for nav links */
+.sweep {
+  position: relative;
+}
+.sweep::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.sweep:hover::after,
+.sweep:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ==================================================================
+   Reduced motion — honour the OS setting everywhere
+   ================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
@@ -65,84 +247,8 @@ html {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
 
-::selection {
-  background: #6366f1;
-  color: #0a0a0a;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #27272a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
-}
-
-.focus-visible-ring {
-  @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-white/20 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a];
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-.font-display {
-  font-family: var(--font-display);
-  font-weight: 400;
-}
-
-.preserve-3d {
-  transform-style: preserve-3d;
-}
-
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-/* Magnetic button hover effect */
-.magnetic-button {
-  @apply relative overflow-hidden;
-}
-
-.magnetic-button::before {
-  content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-[#6366f1]/20 via-transparent to-[#a855f7]/20 opacity-0 transition-opacity duration-300;
-}
-
-.magnetic-button:hover::before {
-  @apply opacity-100;
-}
-
-/* Noise overlay utility */
-.noise-overlay::before {
-  content: "";
-  @apply absolute inset-0 pointer-events-none opacity-[0.03];
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-}
-
-/* Gradient text */
-.gradient-text {
-  @apply bg-gradient-to-r from-[#6366f1] via-[#a855f7] to-[#ec4899] bg-clip-text text-transparent;
-}
-
-/* Hide scrollbar */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
+  .lift:hover {
+    transform: none;
+  }
 }
