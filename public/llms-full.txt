@@ -1,0 +1,159 @@
+# Abdul Rahman — IT & Digital Media Professional Portfolio (Full Content)
+
+## Home Page
+
+### Hero Section
+**Headline**: "I build websites that sell." (with rotating words: E-commerce · Web · Brand · Content)
+
+**Subtext**: Abdul Rahman — IT & Digital Media Professional. I design, develop and manage fast, SEO-ready e-commerce and business websites.
+
+**CTAs**: "View My Work" (scrolls to work), "Contact Me" (mailto: abdulrahmankashif4@gmail.com)
+
+**Status**: Available for new projects
+
+### Skills Marquee
+Next.js · React · E-commerce · UI/UX · SEO · Graphic Design · Git/GitHub · Vercel · DNS · Digital Content
+
+---
+
+## Selected Work
+
+### Project 01: Shades Theory
+**Category**: E-commerce / Eyewear Store
+**Live**: https://theoryshades.store/
+**Case Study**: /work/shades-theory
+
+**Tags**: Next.js, E-commerce, UI/UX, SEO
+
+**Work Performed**:
+- Web Development
+- E-commerce
+- UI/UX
+- Graphic Design
+- Digital Content
+- SEO
+- Git/GitHub
+- Vercel
+- Domain/DNS
+- Technical Management & Troubleshooting
+
+### Project 02: Alkahaf Store
+**Category**: E-commerce / Online Store
+**Live**: https://store.alkahaf.org/
+**Case Study**: /work/alkahaf-store
+
+**Tags**: Next.js, E-commerce, Management, Technical Support
+
+**Work Performed**:
+- Website Development
+- E-commerce
+- Website Management
+- Digital Content
+- Technical Management & Troubleshooting
+
+---
+
+## Services
+
+### 1. Web Development
+**Description**: Custom Next.js, React, and TypeScript builds — fast, scalable, and SEO-ready from day one.
+**Tags**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+**Link**: /services#web-development
+
+### 2. E-commerce & Store Management
+**Description**: End-to-end store setup, product management, checkout optimization, and ongoing store operations.
+**Tags**: E-commerce Platforms, Payment Integration, Inventory, Orders, Analytics
+**Link**: /services#ecommerce-management
+
+### 3. UI/UX & Graphic Design
+**Description**: User-centered interfaces, design systems, brand identity, and digital content that converts.
+**Tags**: Figma, Design Systems, Branding, Wireframing, Prototyping
+**Link**: /services#uiux-design
+
+### 4. SEO & Digital Content
+**Description**: Technical SEO, content strategy, on-page optimization, and structured data for search visibility.
+**Tags**: Technical SEO, Content Strategy, Schema Markup, Core Web Vitals, Analytics
+**Link**: /services#seo-content
+
+### 5. Deployment & Technical Support
+**Description**: Vercel deployment, Git/GitHub workflows, domain/DNS configuration, and ongoing troubleshooting.
+**Tags**: Vercel, Git/GitHub, Domain/DNS, CI/CD, Monitoring, Troubleshooting
+**Link**: /services#deployment-support
+
+---
+
+## Process
+
+### 01 Discovery
+We clarify goals, audience, and scope. I audit existing assets, research competitors, and define a clear project roadmap with timelines and milestones.
+
+### 02 Design
+Wireframes, UI systems, and high-fidelity mockups. You review and approve designs before any code is written — ensuring alignment and zero surprises.
+
+### 03 Build
+Clean, performant code using Next.js, React, and modern tooling. E-commerce integration, CMS setup, SEO foundations, and responsive testing on every device.
+
+### 04 Launch & Support
+Deployed to Vercel with preview URLs, custom domain, SSL, and analytics. Post-launch monitoring, training, and ongoing support so you are never stuck.
+
+---
+
+## Tech Stack
+Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Git/GitHub, Vercel, E-commerce Platforms, SEO Tools, Figma, Node.js
+
+---
+
+## About
+
+**Bio**: I'm Abdul Rahman, an IT & Digital Media Professional specializing in building fast, SEO-ready e-commerce and business websites.
+
+With expertise across the full stack — from design and development to deployment and ongoing management — I deliver complete web solutions that perform. My approach combines clean code, thoughtful UX, and technical rigor to create websites that not only look great but convert visitors into customers.
+
+Whether you need a new e-commerce store, a website redesign, technical troubleshooting, or ongoing site management, I bring the skills and experience to ship quality work on time.
+
+**Statistics**:
+- 2 Featured Projects
+- 10+ Skills & Services
+
+---
+
+## FAQ
+
+### What do you build?
+I build fast, SEO-ready e-commerce and business websites using Next.js, React, and modern tooling. This includes custom web applications, online stores, landing pages, and content-driven sites. I also handle the design, deployment, and ongoing management.
+
+### Do you handle SEO?
+Yes. Every project includes SEO fundamentals: semantic HTML structure, meta tags, Open Graph, sitemap.xml, robots.txt, JSON-LD structured data, and performance optimization for Core Web Vitals. I can also advise on ongoing content strategy and technical SEO improvements.
+
+### How long does a website take?
+Timelines vary by scope. A focused landing page or small business site typically takes 2–4 weeks. A full e-commerce store with custom features usually takes 4–8 weeks. I share a detailed timeline after the discovery phase so you know exactly what to expect.
+
+### Can you manage or fix my existing website?
+Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a WordPress install, or a custom stack, I can help stabilize and improve it.
+
+### Do you set up domain, DNS and hosting (Vercel)?
+Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT, MX records), SSL, and production deployment on Vercel with preview deployments, environment variables, and custom domains. I also set up analytics and monitoring.
+
+---
+
+## Contact
+
+**Headline**: "Let's build something that flows."
+
+**Email**: abdulrahmankashif4@gmail.com (click to copy)
+
+**Location**: Remote · Worldwide
+
+**Form Fields**: Name (required), Email (required), Message (required, min 10 chars)
+
+**Submit**: Sends to /api/contact endpoint
+
+---
+
+## Footer
+**Brand**: Abdul Rahman
+**Navigation**: Work, Services, About, FAQ, Contact
+**Services**: Web Development, E-commerce & Store Management, UI/UX & Graphic Design, SEO & Digital Content, Deployment & Technical Support
+**Contact**: abdulrahmankashif4@gmail.com, Remote · Worldwide
+**Social**: GitHub (TODO), LinkedIn (TODO)
+**Copyright**: © 2025 Abdul Rahman. All rights reserved.
