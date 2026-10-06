@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { siteConfig } from "@/data/site";
+import { faqItems } from "@/data/faq";
 
 export function generateMetadata(overrides: Partial<Metadata> = {}): Metadata {
   const title = overrides.title
@@ -16,7 +17,9 @@ export function generateMetadata(overrides: Partial<Metadata> = {}): Metadata {
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     publisher: siteConfig.name,
+    category: "technology",
     robots: "index, follow",
+    alternates: { canonical: "/" },
     openGraph: {
       type: "website",
       locale: "en_US",
@@ -30,10 +33,26 @@ export function generateMetadata(overrides: Partial<Metadata> = {}): Metadata {
       title,
       description,
     },
-    alternates: {
-      canonical: "/",
-    },
     ...overrides,
+  };
+}
+
+/**
+ * FAQ structured data is derived from src/data/faq.ts so the two can never
+ * drift out of sync.
+ */
+function faqSchema() {
+  return {
+    "@type": "FAQPage",
+    "@id": `${siteConfig.url}/faq#faq`,
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
   };
 }
 
@@ -52,15 +71,19 @@ export function generateJSONLD() {
         knowsAbout: siteConfig.keywords,
         serviceType: [
           "Web Development",
-          "E-commerce Development",
           "UI/UX Design",
+          "E-commerce Development",
+          "Shopify Store Development",
           "Graphic Design",
+          "Video Editing",
           "SEO Services",
           "Technical Support",
           "Deployment Services",
         ],
         areaServed: "Worldwide",
-        sameAs: [siteConfig.social.github, siteConfig.social.linkedin].filter(Boolean),
+        sameAs: [siteConfig.social.github, siteConfig.social.linkedin].filter(
+          (url) => url && !url.includes("TODO")
+        ),
       },
       {
         "@type": "WebSite",
@@ -71,52 +94,7 @@ export function generateJSONLD() {
         publisher: { "@id": `${siteConfig.url}#person` },
         inLanguage: "en-US",
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${siteConfig.url}/faq#faq`,
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "What do you build?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "I build fast, SEO-ready e-commerce and business websites using Next.js, React, and modern tooling. This includes custom web applications, online stores, landing pages, and content-driven sites. I also handle the design, deployment, and ongoing management.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Do you handle SEO?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. Every project includes SEO fundamentals: semantic HTML structure, meta tags, Open Graph, sitemap.xml, robots.txt, JSON-LD structured data, and performance optimization for Core Web Vitals. I can also advise on ongoing content strategy and technical SEO improvements.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How long does a website take?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Timelines vary by scope. A focused landing page or small business site typically takes 2–4 weeks. A full e-commerce store with custom features usually takes 4–8 weeks. I share a detailed timeline after the discovery phase so you know exactly what to expect.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Can you manage or fix my existing website?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a WordPress install, or a custom stack, I can help stabilize and improve it.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Do you set up domain, DNS and hosting (Vercel)?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT, MX records), SSL, and production deployment on Vercel with preview deployments, environment variables, and custom domains. I also set up analytics and monitoring.",
-            },
-          },
-        ],
-      },
+      faqSchema(),
     ],
   };
 }

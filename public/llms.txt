@@ -1,31 +1,54 @@
 # Abdul Rahman — IT & Digital Media Professional Portfolio
 
 ## Overview
-This is the personal portfolio website of Abdul Rahman, an IT & Digital Media Professional specializing in building fast, SEO-ready e-commerce and business websites.
+Personal portfolio of Abdul Rahman, an IT & Digital Media Professional building fast, SEO-ready websites, e-commerce stores and brand content.
 
 ## Services Offered
-- **Web Development**: Custom Next.js, React, and TypeScript builds — fast, scalable, and SEO-ready from day one.
-- **E-commerce & Store Management**: End-to-end store setup, product management, checkout optimization, and ongoing store operations.
-- **UI/UX & Graphic Design**: User-centered interfaces, design systems, brand identity, and digital content that converts.
-- **SEO & Digital Content**: Technical SEO, content strategy, on-page optimization, and structured data for search visibility.
-- **Deployment & Technical Support**: Vercel deployment, Git/GitHub workflows, domain/DNS configuration, and ongoing troubleshooting.
+
+1. **Web Development** — Custom Next.js, React and TypeScript builds.
+   Tags: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
+2. **E-commerce & Store Management** — Store setup, product and inventory management, checkout optimisation.
+   Tags: Shopify, WooCommerce, Product Management, Payments, Order fulfilment
+3. **Shopify Store Setup & Growth** — Custom Shopify builds, Liquid themes, apps and conversion tweaks.
+   Tags: Shopify, Liquid, Theme Customisation, Apps & Integrations, Store SEO
+4. **UI/UX & Web Design** — User-centred interfaces, design systems, responsive layouts.
+   Tags: Figma, Wireframing, Prototyping, Design Systems, Responsive Layouts
+5. **Graphic Designing** — Logos, brand kits, social posts, banners, print-ready artwork.
+   Tags: Photoshop, Illustrator, Canva, Logo Design, Brand Identity, Social Media Kits
+6. **Video Editing** — Cuts, colour grading, subtitles, motion graphics for reels and promos.
+   Tags: Premiere Pro, After Effects, CapCut, Colour Grading, Subtitles, Short-form Reels
+7. **SEO & Digital Content** — Technical SEO, on-page optimisation, content writing, structured data.
+   Tags: Technical SEO, Keyword Research, Schema Markup, Content Writing, Analytics
+8. **Deployment & Technical Support** — Vercel/Shopify deployment, Git/GitHub, domain/DNS, troubleshooting.
+   Tags: Vercel, Shopify, Git/GitHub, Domain/DNS, SSL, Monitoring
 
 ## Featured Projects
 
 ### 1. Shades Theory — E-commerce / Eyewear Store
-- **Live URL**: https://theoryshades.store/
-- **Case Study**: /work/shades-theory
-- **Work Performed**: Web Development, E-commerce, UI/UX, Graphic Design, Digital Content, SEO, Git/GitHub, Vercel, Domain/DNS, Technical Management & Troubleshooting
-- **Technologies**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion, E-commerce Platform, SEO Tools
+- **Live**: https://theoryshades.store/
+- **Case study**: /work/shades-theory
+- **Screenshot**: /projects/shades-theory.jpg
+- **Work performed**: Web Development, E-commerce, UI/UX, Graphic Design, Digital Content, SEO, Git/GitHub, Vercel, Domain/DNS, Technical Management & Troubleshooting
 
 ### 2. Alkahaf Store — E-commerce / Online Store
-- **Live URL**: https://store.alkahaf.org/
-- **Case Study**: /work/alkahaf-store
-- **Work Performed**: Website Development, E-commerce, Website Management, Digital Content, Technical Management & Troubleshooting
-- **Technologies**: Next.js, React, TypeScript, Tailwind CSS, Git/GitHub, Vercel, E-commerce Platform
+- **Live**: https://store.alkahaf.org/
+- **Case study**: /work/alkahaf-store
+- **Screenshot**: /projects/alkahaf-store.png
+- **Work performed**: Website Development, E-commerce, Website Management, Digital Content, Technical Management & Troubleshooting
 
-## Technical Stack
-Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Git/GitHub, Vercel, E-commerce Platforms, SEO Tools, Figma, Node.js
+## Tools & Technologies
+
+**Web**: Next.js, React, TypeScript, Tailwind CSS, Node.js, Framer Motion, GSAP, Git/GitHub, Vercel, Figma
+
+**E-commerce**: Shopify, WooCommerce
+
+**Graphic design**: Photoshop, Illustrator, Canva, Figma
+
+**Video**: Premiere Pro, After Effects, CapCut
+
+**SEO**: Google Search Console, Google Analytics, SEMrush, Ahrefs
+
+**Support**: Domain & DNS, cPanel
 
 ## Contact
 - **Email**: abdulrahmankashif4@gmail.com
@@ -39,5 +62,5 @@ Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Git/GitHub, Verce
 - About: /about
 - FAQ: /faq
 - Contact: /contact
-- Case Study - Shades Theory: /work/shades-theory
-- Case Study - Alkahaf Store: /work/alkahaf-store
+- Case study — Shades Theory: /work/shades-theory
+- Case study — Alkahaf Store: /work/alkahaf-store

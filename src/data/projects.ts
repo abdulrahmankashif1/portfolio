@@ -24,6 +24,7 @@ export const projects: Project[] = [
     category: "E-commerce",
     liveUrl: "https://theoryshades.store/",
     caseStudyUrl: "/work/shades-theory",
+    image: "/projects/shades-theory.jpg",
     gradient: "from-indigo-500/30 via-violet-500/20 to-fuchsia-500/30",
     accent: "#818cf8",
     tags: ["Next.js", "E-commerce", "UI/UX", "SEO"],

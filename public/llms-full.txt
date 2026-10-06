@@ -2,17 +2,17 @@
 
 ## Home Page
 
-### Hero Section
-**Headline**: "I build websites that sell." (with rotating words: E-commerce · Web · Brand · Content)
+### Hero
+**Headline**: "I build websites that ___ sell." — rotating words: E-commerce, Web, Brand, Content
 
 **Subtext**: Abdul Rahman — IT & Digital Media Professional. I design, develop and manage fast, SEO-ready e-commerce and business websites.
 
-**CTAs**: "View My Work" (scrolls to work), "Contact Me" (mailto: abdulrahmankashif4@gmail.com)
+**CTAs**: "View My Work" (scrolls to #work), "Contact Me" (mailto: abdulrahmankashif4@gmail.com)
 
 **Status**: Available for new projects
 
 ### Skills Marquee
-Next.js · React · E-commerce · UI/UX · SEO · Graphic Design · Git/GitHub · Vercel · DNS · Digital Content
+Next.js · React · E-commerce · Shopify · UI/UX · SEO · Graphic Design · Video Editing · Photoshop · Illustrator · Premiere Pro · After Effects · Canva · Git/GitHub · Vercel · DNS · Digital Content
 
 ---
 
@@ -21,117 +21,115 @@ Next.js · React · E-commerce · UI/UX · SEO · Graphic Design · Git/GitHub �
 ### Project 01: Shades Theory
 **Category**: E-commerce / Eyewear Store
 **Live**: https://theoryshades.store/
-**Case Study**: /work/shades-theory
-
+**Case study**: /work/shades-theory
+**Screenshot**: public/projects/shades-theory.jpg
 **Tags**: Next.js, E-commerce, UI/UX, SEO
 
-**Work Performed**:
-- Web Development
-- E-commerce
-- UI/UX
-- Graphic Design
-- Digital Content
-- SEO
-- Git/GitHub
-- Vercel
-- Domain/DNS
-- Technical Management & Troubleshooting
+**Work performed**: Web Development, E-commerce, UI/UX, Graphic Design, Digital Content, SEO, Git/GitHub, Vercel, Domain/DNS, Technical Management & Troubleshooting
 
 ### Project 02: Alkahaf Store
 **Category**: E-commerce / Online Store
 **Live**: https://store.alkahaf.org/
-**Case Study**: /work/alkahaf-store
-
+**Case study**: /work/alkahaf-store
+**Screenshot**: public/projects/alkahaf-store.png
 **Tags**: Next.js, E-commerce, Management, Technical Support
 
-**Work Performed**:
-- Website Development
-- E-commerce
-- Website Management
-- Digital Content
-- Technical Management & Troubleshooting
+**Work performed**: Website Development, E-commerce, Website Management, Digital Content, Technical Management & Troubleshooting
 
 ---
 
-## Services
+## Services (8)
 
 ### 1. Web Development
-**Description**: Custom Next.js, React, and TypeScript builds — fast, scalable, and SEO-ready from day one.
-**Tags**: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
-**Link**: /services#web-development
+Custom Next.js, React and TypeScript builds — fast, scalable and SEO-ready from day one.
+Tags: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
 
 ### 2. E-commerce & Store Management
-**Description**: End-to-end store setup, product management, checkout optimization, and ongoing store operations.
-**Tags**: E-commerce Platforms, Payment Integration, Inventory, Orders, Analytics
-**Link**: /services#ecommerce-management
+Store setup, product and inventory management, checkout optimisation and day-to-day store operations.
+Tags: Shopify, WooCommerce, Product Management, Payments, Order fulfilment
 
-### 3. UI/UX & Graphic Design
-**Description**: User-centered interfaces, design systems, brand identity, and digital content that converts.
-**Tags**: Figma, Design Systems, Branding, Wireframing, Prototyping
-**Link**: /services#uiux-design
+### 3. Shopify Store Setup & Growth
+Custom Shopify builds — themes, apps, product pages and conversion tweaks that make the store easier to buy from.
+Tags: Shopify, Liquid, Theme Customisation, Apps & Integrations, Store SEO
 
-### 4. SEO & Digital Content
-**Description**: Technical SEO, content strategy, on-page optimization, and structured data for search visibility.
-**Tags**: Technical SEO, Content Strategy, Schema Markup, Core Web Vitals, Analytics
-**Link**: /services#seo-content
+### 4. UI/UX & Web Design
+User-centred interfaces, design systems and layouts that stay clear on every screen size.
+Tags: Figma, Wireframing, Prototyping, Design Systems, Responsive Layouts
 
-### 5. Deployment & Technical Support
-**Description**: Vercel deployment, Git/GitHub workflows, domain/DNS configuration, and ongoing troubleshooting.
-**Tags**: Vercel, Git/GitHub, Domain/DNS, CI/CD, Monitoring, Troubleshooting
-**Link**: /services#deployment-support
+### 5. Graphic Designing
+Logos, brand kits, social posts, banners and print-ready artwork — designed to look sharp at every size.
+Tags: Photoshop, Illustrator, Canva, Logo Design, Brand Identity, Social Media Kits
+
+### 6. Video Editing
+Clean cuts, colour grading, subtitles and motion graphics for reels, promos and YouTube content.
+Tags: Premiere Pro, After Effects, CapCut, Colour Grading, Subtitles, Short-form Reels
+
+### 7. SEO & Digital Content
+Technical SEO, on-page optimisation, content writing and structured data so the work actually gets found.
+Tags: Technical SEO, Keyword Research, Schema Markup, Content Writing, Analytics
+
+### 8. Deployment & Technical Support
+Vercel and Shopify deployment, Git/GitHub workflows, domain/DNS setup and ongoing troubleshooting.
+Tags: Vercel, Shopify, Git/GitHub, Domain/DNS, SSL, Monitoring
 
 ---
 
 ## Process
 
-### 01 Discovery
-We clarify goals, audience, and scope. I audit existing assets, research competitors, and define a clear project roadmap with timelines and milestones.
+**01 Discovery** — clarify goals, audience and scope; audit existing assets, research competitors, define a roadmap with realistic timelines. Deliverables: project brief, competitor audit, scope & timeline.
 
-### 02 Design
-Wireframes, UI systems, and high-fidelity mockups. You review and approve designs before any code is written — ensuring alignment and zero surprises.
+**02 Design** — wireframes, UI systems and high-fidelity mockups; you approve the design before code is written. Deliverables: wireframes, UI design, design system.
 
-### 03 Build
-Clean, performant code using Next.js, React, and modern tooling. E-commerce integration, CMS setup, SEO foundations, and responsive testing on every device.
+**03 Build** — clean, performant code with Next.js and React; e-commerce integration, SEO foundations, responsive testing. Deliverables: Next.js build, e-commerce setup, SEO foundations.
 
-### 04 Launch & Support
-Deployed to Vercel with preview URLs, custom domain, SSL, and analytics. Post-launch monitoring, training, and ongoing support so you are never stuck.
+**04 Launch & Support** — deployed to Vercel with preview URLs, custom domain, SSL and analytics; post-launch monitoring, handover training and ongoing support. Deliverables: Vercel deploy, domain & DNS, ongoing support.
 
 ---
 
-## Tech Stack
-Next.js, React, TypeScript, Tailwind CSS, Framer Motion, GSAP, Git/GitHub, Vercel, E-commerce Platforms, SEO Tools, Figma, Node.js
+## Tools & Technologies
+
+- **Web**: Next.js, React, TypeScript, Tailwind CSS, Node.js, Framer Motion, GSAP, Git/GitHub, Vercel, Figma
+- **E-commerce**: Shopify, WooCommerce
+- **Graphic design**: Photoshop, Illustrator, Canva, Figma
+- **Video**: Premiere Pro, After Effects, CapCut
+- **SEO**: Google Search Console, Google Analytics, SEMrush, Ahrefs
+- **Support**: Domain & DNS, cPanel
 
 ---
 
 ## About
 
-**Bio**: I'm Abdul Rahman, an IT & Digital Media Professional specializing in building fast, SEO-ready e-commerce and business websites.
+I'm Abdul Rahman, an IT & Digital Media Professional specialising in building fast, SEO-ready e-commerce and business websites.
 
-With expertise across the full stack — from design and development to deployment and ongoing management — I deliver complete web solutions that perform. My approach combines clean code, thoughtful UX, and technical rigor to create websites that not only look great but convert visitors into customers.
+My work spans the full journey — design, development, graphics, video and deployment. I build websites in code, craft logos and brand kits in Photoshop and Illustrator, and edit video in Premiere Pro and After Effects.
 
-Whether you need a new e-commerce store, a website redesign, technical troubleshooting, or ongoing site management, I bring the skills and experience to ship quality work on time.
+Whether you need a new e-commerce store, a Shopify build, brand assets, edited reels, technical troubleshooting or ongoing site management, I deliver work that looks sharp and performs.
 
-**Statistics**:
-- 2 Featured Projects
-- 10+ Skills & Services
+**Statistics**: 2 Featured Projects · 8+ Skills & Services
 
 ---
 
-## FAQ
+## FAQ (7)
 
-### What do you build?
-I build fast, SEO-ready e-commerce and business websites using Next.js, React, and modern tooling. This includes custom web applications, online stores, landing pages, and content-driven sites. I also handle the design, deployment, and ongoing management.
+**What do you build?**
+I build fast, SEO-ready e-commerce and business websites using Next.js, React and modern tooling — including custom web apps, online stores, Shopify builds and landing pages. Alongside development I also handle graphic design (logos, brand kits, social posts), video editing for reels and promos, and the ongoing management that keeps everything running.
 
-### Do you handle SEO?
+**Do you do graphic design and video editing too?**
+Yes. Graphic design work is done in Photoshop, Illustrator and Canva — logos, brand identity, banners, product images and social media kits. Video editing covers Premiere Pro, After Effects and CapCut: cuts, colour grading, subtitles and motion graphics for YouTube, promos and short-form reels.
+
+**Do you work with Shopify?**
+Yes. I set up and customise Shopify stores — theme development in Liquid, product and collection pages, app integrations, store SEO and conversion tweaks. I can also handle the day-to-day side: product uploads, inventory, pricing and order issues.
+
+**Do you handle SEO?**
 Yes. Every project includes SEO fundamentals: semantic HTML structure, meta tags, Open Graph, sitemap.xml, robots.txt, JSON-LD structured data, and performance optimization for Core Web Vitals. I can also advise on ongoing content strategy and technical SEO improvements.
 
-### How long does a website take?
+**How long does a website take?**
 Timelines vary by scope. A focused landing page or small business site typically takes 2–4 weeks. A full e-commerce store with custom features usually takes 4–8 weeks. I share a detailed timeline after the discovery phase so you know exactly what to expect.
 
-### Can you manage or fix my existing website?
-Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a WordPress install, or a custom stack, I can help stabilize and improve it.
+**Can you manage or fix my existing website?**
+Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a Shopify store, a WordPress install, or a custom stack, I can help stabilize and improve it.
 
-### Do you set up domain, DNS and hosting (Vercel)?
+**Do you set up domain, DNS and hosting?**
 Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT, MX records), SSL, and production deployment on Vercel with preview deployments, environment variables, and custom domains. I also set up analytics and monitoring.
 
 ---
@@ -139,21 +137,17 @@ Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT,
 ## Contact
 
 **Headline**: "Let's build something that flows."
-
 **Email**: abdulrahmankashif4@gmail.com (click to copy)
-
 **Location**: Remote · Worldwide
-
-**Form Fields**: Name (required), Email (required), Message (required, min 10 chars)
-
-**Submit**: Sends to /api/contact endpoint
+**Form fields**: Name (required), Email (required), Message (required, min 10 chars)
+**Endpoint**: POST /api/contact
 
 ---
 
 ## Footer
 **Brand**: Abdul Rahman
 **Navigation**: Work, Services, About, FAQ, Contact
-**Services**: Web Development, E-commerce & Store Management, UI/UX & Graphic Design, SEO & Digital Content, Deployment & Technical Support
+**Services**: Web Development, E-commerce & Store Management, Shopify Store Setup, UI/UX & Web Design, Graphic Designing, Video Editing, SEO & Digital Content, Deployment & Technical Support
 **Contact**: abdulrahmankashif4@gmail.com, Remote · Worldwide
-**Social**: GitHub (TODO), LinkedIn (TODO)
-**Copyright**: © 2025 Abdul Rahman. All rights reserved.
+**Social**: GitHub, LinkedIn (URLs marked TODO in src/data/site.ts)
+**Copyright**: © Abdul Rahman

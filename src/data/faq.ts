@@ -8,7 +8,17 @@ export const faqItems: FAQItem[] = [
   {
     id: "what-do-you-build",
     question: "What do you build?",
-    answer: "I build fast, SEO-ready e-commerce and business websites using Next.js, React, and modern tooling. This includes custom web applications, online stores, landing pages, and content-driven sites. I also handle the design, deployment, and ongoing management.",
+    answer: "I build fast, SEO-ready e-commerce and business websites using Next.js, React and modern tooling — including custom web apps, online stores, Shopify builds and landing pages. Alongside development I also handle graphic design (logos, brand kits, social posts), video editing for reels and promos, and the ongoing management that keeps everything running.",
+  },
+  {
+    id: "do-you-do-graphic-design-and-video",
+    question: "Do you do graphic design and video editing too?",
+    answer: "Yes. Graphic design work is done in Photoshop, Illustrator and Canva — logos, brand identity, banners, product images and social media kits. Video editing covers Premiere Pro, After Effects and CapCut: cuts, colour grading, subtitles and motion graphics for YouTube, promos and short-form reels.",
+  },
+  {
+    id: "do-you-work-with-shopify",
+    question: "Do you work with Shopify?",
+    answer: "Yes. I set up and customise Shopify stores — theme development in Liquid, product and collection pages, app integrations, store SEO and conversion tweaks. I can also handle the day-to-day side: product uploads, inventory, pricing and order issues.",
   },
   {
     id: "do-you-handle-seo",
@@ -23,11 +33,11 @@ export const faqItems: FAQItem[] = [
   {
     id: "can-you-manage-or-fix-existing-website",
     question: "Can you manage or fix my existing website?",
-    answer: "Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a WordPress install, or a custom stack, I can help stabilize and improve it.",
+    answer: "Absolutely. I offer technical management, troubleshooting, performance audits, bug fixes, content updates, and platform migrations. Whether it's a Next.js site, a Shopify store, a WordPress install, or a custom stack, I can help stabilize and improve it.",
   },
   {
     id: "do-you-setup-domain-dns-hosting",
-    question: "Do you set up domain, DNS and hosting (Vercel)?",
+    question: "Do you set up domain, DNS and hosting?",
     answer: "Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT, MX records), SSL, and production deployment on Vercel with preview deployments, environment variables, and custom domains. I also set up analytics and monitoring.",
   },
 ];

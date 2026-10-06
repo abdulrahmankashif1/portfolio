@@ -12,7 +12,8 @@ export const services: Service[] = [
     id: "web-development",
     icon: "Code",
     title: "Web Development",
-    description: "Custom Next.js, React, and TypeScript builds — fast, scalable, and SEO-ready from day one.",
+    description:
+      "Custom Next.js, React and TypeScript builds — fast, scalable and SEO-ready from day one.",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     href: "/services#web-development",
   },
@@ -20,32 +21,63 @@ export const services: Service[] = [
     id: "ecommerce-management",
     icon: "ShoppingCart",
     title: "E-commerce & Store Management",
-    description: "End-to-end store setup, product management, checkout optimization, and ongoing store operations.",
-    tags: ["E-commerce Platforms", "Payment Integration", "Inventory", "Orders", "Analytics"],
+    description:
+      "Store setup, product and inventory management, checkout optimisation and day-to-day store operations.",
+    tags: ["Shopify", "WooCommerce", "Product Management", "Payments", "Order fulfilment"],
     href: "/services#ecommerce-management",
+  },
+  {
+    id: "shopify-stores",
+    icon: "Store",
+    title: "Shopify Store Setup & Growth",
+    description:
+      "Custom Shopify builds — themes, apps, product pages and conversion tweaks that make the store easier to buy from.",
+    tags: ["Shopify", "Liquid", "Theme Customisation", "Apps & Integrations", "Store SEO"],
+    href: "/services#shopify-stores",
   },
   {
     id: "uiux-design",
     icon: "Palette",
-    title: "UI/UX & Graphic Design",
-    description: "User-centered interfaces, design systems, brand identity, and digital content that converts.",
-    tags: ["Figma", "Design Systems", "Branding", "Wireframing", "Prototyping"],
+    title: "UI/UX & Web Design",
+    description:
+      "User-centred interfaces, design systems and layouts that stay clear on every screen size.",
+    tags: ["Figma", "Wireframing", "Prototyping", "Design Systems", "Responsive Layouts"],
     href: "/services#uiux-design",
+  },
+  {
+    id: "graphic-design",
+    icon: "PenTool",
+    title: "Graphic Designing",
+    description:
+      "Logos, brand kits, social posts, banners and print-ready artwork — designed to look sharp at every size.",
+    tags: ["Photoshop", "Illustrator", "Canva", "Logo Design", "Brand Identity", "Social Media Kits"],
+    href: "/services#graphic-design",
+  },
+  {
+    id: "video-editing",
+    icon: "Video",
+    title: "Video Editing",
+    description:
+      "Clean cuts, colour grading, subtitles and motion graphics for reels, promos and YouTube content.",
+    tags: ["Premiere Pro", "After Effects", "CapCut", "Colour Grading", "Subtitles", "Short-form Reels"],
+    href: "/services#video-editing",
   },
   {
     id: "seo-content",
     icon: "Search",
     title: "SEO & Digital Content",
-    description: "Technical SEO, content strategy, on-page optimization, and structured data for search visibility.",
-    tags: ["Technical SEO", "Content Strategy", "Schema Markup", "Core Web Vitals", "Analytics"],
+    description:
+      "Technical SEO, on-page optimisation, content writing and structured data so the work actually gets found.",
+    tags: ["Technical SEO", "Keyword Research", "Schema Markup", "Content Writing", "Analytics"],
     href: "/services#seo-content",
   },
   {
     id: "deployment-support",
     icon: "Server",
     title: "Deployment & Technical Support",
-    description: "Vercel deployment, Git/GitHub workflows, domain/DNS configuration, and ongoing troubleshooting.",
-    tags: ["Vercel", "Git/GitHub", "Domain/DNS", "CI/CD", "Monitoring", "Troubleshooting"],
+    description:
+      "Vercel and Shopify deployment, Git/GitHub workflows, domain/DNS setup and ongoing troubleshooting.",
+    tags: ["Vercel", "Shopify", "Git/GitHub", "Domain/DNS", "SSL", "Monitoring"],
     href: "/services#deployment-support",
   },
 ];

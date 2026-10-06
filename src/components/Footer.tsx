@@ -23,7 +23,10 @@ export function Footer() {
     services: [
       { href: "/services#web-development", label: "Web Development" },
       { href: "/services#ecommerce-management", label: "E-commerce & Store Management" },
-      { href: "/services#uiux-design", label: "UI/UX & Graphic Design" },
+      { href: "/services#shopify-stores", label: "Shopify Store Setup" },
+      { href: "/services#uiux-design", label: "UI/UX & Web Design" },
+      { href: "/services#graphic-design", label: "Graphic Designing" },
+      { href: "/services#video-editing", label: "Video Editing" },
       { href: "/services#seo-content", label: "SEO & Digital Content" },
       { href: "/services#deployment-support", label: "Deployment & Technical Support" },
     ],

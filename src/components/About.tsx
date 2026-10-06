@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { value: 2, label: "Featured Projects", suffix: "" },
-  { value: 10, label: "Skills & Services", suffix: "+" },
+  { value: 8, label: "Skills & Services", suffix: "+" },
 ];
 
 export function About() {
@@ -159,10 +159,15 @@ export function About() {
                 I'm Abdul Rahman, an IT & Digital Media Professional specializing in building fast, SEO-ready e-commerce and business websites.
               </p>
               <p className="text-lg text-zinc-400 leading-relaxed mb-6">
-                With expertise across the full stack — from design and development to deployment and ongoing management — I deliver complete web solutions that perform. My approach combines clean code, thoughtful UX, and technical rigor to create websites that not only look great but convert visitors into customers.
+                My work spans the full journey — design, development, graphics,
+                video and deployment. I build websites in code, craft logos and
+                brand kits in Photoshop and Illustrator, and edit video in
+                Premiere Pro and After Effects.
               </p>
               <p className="text-lg text-zinc-400 leading-relaxed">
-                Whether you need a new e-commerce store, a website redesign, technical troubleshooting, or ongoing site management, I bring the skills and experience to ship quality work on time.
+                Whether you need a new e-commerce store, a Shopify build, brand
+                assets, edited reels, technical troubleshooting or ongoing site
+                management, I deliver work that looks sharp and performs.
               </p>
             </motion.div>
 
