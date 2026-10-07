@@ -1,4 +1,3 @@
-import { Preloader } from "@/components/Preloader";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { SelectedWork } from "@/components/SelectedWork";
@@ -12,7 +11,6 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Preloader />
       <Header />
       <main id="main-content" className="relative z-[2]">
         <Hero />

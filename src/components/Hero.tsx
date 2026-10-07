@@ -12,14 +12,10 @@ import { heroRotatingWords, marqueeSkills } from "@/data/site";
 import { Marquee } from "./Marquee";
 
 /* ------------------------------------------------------------------ */
-/* 3D floating orb — additive wireframe reads clean on a dark canvas    */
+/* 3D floating orb                                                     */
 /* ------------------------------------------------------------------ */
 
-function FloatingOrb({
-  prefersReducedMotion,
-}: {
-  prefersReducedMotion: boolean;
-}) {
+function FloatingOrb({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
   const group = useRef<THREE.Group>(null);
 
   useFrame((state) => {
@@ -32,7 +28,6 @@ function FloatingOrb({
   return (
     <group ref={group}>
       <Float speed={1.3} rotationIntensity={0.35} floatIntensity={0.5}>
-        {/* Solid core with a soft additive glow */}
         <mesh>
           <icosahedronGeometry args={[1.35, 1]} />
           <meshBasicMaterial
@@ -43,8 +38,6 @@ function FloatingOrb({
             depthWrite={false}
           />
         </mesh>
-
-        {/* Wireframe cage */}
         <mesh>
           <icosahedronGeometry args={[1.45, 1]} />
           <meshBasicMaterial
@@ -56,8 +49,6 @@ function FloatingOrb({
             depthWrite={false}
           />
         </mesh>
-
-        {/* Inner wireframe, counter-rotating for depth */}
         <mesh>
           <icosahedronGeometry args={[0.85, 0]} />
           <meshBasicMaterial
@@ -71,7 +62,6 @@ function FloatingOrb({
         </mesh>
       </Float>
 
-      {/* Orbiting rings */}
       <mesh rotation={[Math.PI / 2.3, 0, 0]}>
         <torusGeometry args={[2.1, 0.008, 6, 140]} />
         <meshBasicMaterial
@@ -97,7 +87,6 @@ function FloatingOrb({
 }
 
 function Hero3DCanvas({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
-  // Only mount WebGL on larger screens — falls back to the CSS glow on mobile
   const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
@@ -112,7 +101,6 @@ function Hero3DCanvas({ prefersReducedMotion }: { prefersReducedMotion: boolean 
   if (!canRender) return null;
 
   return (
-    // Anchored to the right so it never sits behind the headline
     <div
       className="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden w-[46%] overflow-hidden lg:block"
       aria-hidden="true"
@@ -135,77 +123,95 @@ function Hero3DCanvas({ prefersReducedMotion }: { prefersReducedMotion: boolean 
 }
 
 /* ------------------------------------------------------------------ */
-/* Rotating word — width is measured & animated so nothing ever shifts  */
+/* Rotating word                                                       */
+/*                                                                     */
+/* Each word is measured, then the wrapper animates to exactly that      */
+/* width. That keeps "THAT <word> SELL." tight with no dead space,      */
+/* instead of reserving room for the longest word.                      */
 /* ------------------------------------------------------------------ */
 
 function RotatingWord() {
+  const words = heroRotatingWords;
   const [index, setIndex] = useState(0);
-  const [width, setWidth] = useState<number | undefined>(undefined);
+  const [widths, setWidths] = useState<number[]>([]);
   const measureRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
+  // Measure every word. Re-read once webfonts settle, since a fallback
+  // font would give the wrong widths.
   useLayoutEffect(() => {
-    const widths = measureRefs.current.map((el) => el?.offsetWidth ?? 0);
-    const first = widths[0];
-    if (first) {
-      setWidth(first);
-      measureRefs.current.forEach((el, i) => {
-        if (el) el.style.width = `${widths[i]}px`;
-      });
-    }
+    const read = () =>
+      setWidths(measureRefs.current.map((el) => el?.offsetWidth ?? 0));
+
+    read();
+
+    const fonts = document.fonts;
+    if (fonts?.ready) fonts.ready.then(read).catch(() => {});
+
+    const t = setTimeout(read, 800);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
+    if (prefersReducedMotionLocal()) return;
     const id = setInterval(
-      () => setIndex((i) => (i + 1) % heroRotatingWords.length),
+      () => setIndex((i) => (i + 1) % words.length),
       2600
     );
     return () => clearInterval(id);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [words.length]);
 
-  const current = heroRotatingWords[index];
+  const width = widths[index];
 
   return (
-    <span className="relative inline-block overflow-hidden align-baseline">
-      {/* Hidden measuring pass — sets an explicit width per word */}
-      <span className="invisible absolute" aria-hidden="true">
-        {heroRotatingWords.map((w, i) => (
+    <span className="relative inline-block align-baseline">
+      {/* Off-screen measuring pass — one span per word.
+          inline-block is essential: block children stretch to the container
+          and every word would report the widest width. */}
+      <span
+        className="pointer-events-none invisible absolute whitespace-nowrap"
+        aria-hidden="true"
+      >
+        {words.map((w, i) => (
           <span
             key={i}
             ref={(el) => {
               measureRefs.current[i] = el;
             }}
-            className="block whitespace-nowrap"
+            className="inline-block"
           >
             {w}
           </span>
         ))}
       </span>
 
-      {/* Masked vertical slide swap */}
+      {/* Visible word — wrapper width animates, so SELL. sits snug against it */}
       <motion.span
-        animate={{ width: width ?? "auto" }}
-        transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-        className="relative block overflow-hidden whitespace-nowrap"
+        className="relative block whitespace-nowrap"
+        animate={{ width: width ? `${width}px` : "auto" }}
+        transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
       >
-        <AnimatePresence initial={false} mode="popLayout">
+        <AnimatePresence initial={false}>
           <motion.span
-            key={current}
-            initial={{ y: "105%" }}
-            animate={{ y: "0%" }}
-            exit={{ y: "-105%" }}
-            transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
-            onAnimationComplete={() => {
-              const next = measureRefs.current[index]?.offsetWidth;
-              if (next) setWidth(next);
-            }}
+            key={words[index]}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: [0.76, 0, 0.24, 1] }}
             className="block bg-gradient-to-r from-[#818cf8] via-[#c084fc] to-[#f472b6] bg-clip-text text-transparent"
           >
-            {current}
+            {words[index]}
           </motion.span>
         </AnimatePresence>
       </motion.span>
     </span>
   );
+}
+
+// Tiny helper so the interval effect reads clearly
+function prefersReducedMotionLocal() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 /* ------------------------------------------------------------------ */
@@ -259,7 +265,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
           className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5"
         >
           <span className="relative flex h-2 w-2" aria-hidden="true">
@@ -284,7 +290,7 @@ export function Hero() {
               variants={line}
               initial="hidden"
               animate="show"
-              transition={{ duration: 0.9, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.9, delay: 0.18, ease: [0.76, 0, 0.24, 1] }}
               className="block"
             >
               I build websites
@@ -295,7 +301,7 @@ export function Hero() {
               variants={line}
               initial="hidden"
               animate="show"
-              transition={{ duration: 0.9, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.9, delay: 0.32, ease: [0.76, 0, 0.24, 1] }}
               className="block"
             >
               <span className="text-white">that </span>
@@ -309,7 +315,7 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.7, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
           className="mt-7 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
         >
           Abdul Rahman — IT &amp; Digital Media Professional. I design, develop
@@ -320,7 +326,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.68, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.7, delay: 0.62, ease: [0.76, 0, 0.24, 1] }}
           className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4"
         >
           <MagneticButton href="#work" className="w-full sm:w-auto">
@@ -334,12 +340,12 @@ export function Hero() {
           </MagneticButton>
         </motion.div>
 
-        {/* Scroll indicator — bottom-right, clear of the copy */}
+        {/* Scroll indicator */}
         <motion.a
           href="#work"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
+          transition={{ duration: 0.8, delay: 0.95 }}
           className="group absolute bottom-28 right-0 hidden flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-white lg:flex"
           aria-label="Scroll to selected work"
         >
