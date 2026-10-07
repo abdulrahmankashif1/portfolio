@@ -3,7 +3,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { SelectedWork } from "@/components/SelectedWork";
 import { Services } from "@/components/Services";
-import { Process } from "@/components/Process";
 import { TechStack } from "@/components/TechStack";
 import { About } from "@/components/About";
 import { FAQ } from "@/components/FAQ";
@@ -19,7 +18,6 @@ export default function Home() {
         <Hero />
         <SelectedWork />
         <Services />
-        <Process />
         <TechStack />
         <About />
         <FAQ />

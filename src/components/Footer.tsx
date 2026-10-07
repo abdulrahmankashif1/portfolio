@@ -12,6 +12,19 @@ export function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const socialLinks = [
+    {
+      label: "GitHub",
+      href: siteConfig.social.github,
+      icon: <GithubIcon aria-label="GitHub" />,
+    },
+    {
+      label: "LinkedIn",
+      href: siteConfig.social.linkedin,
+      icon: <LinkedinIcon aria-label="LinkedIn" />,
+    },
+  ];
+
   const footerLinks = {
     navigate: [
       { href: "/work", label: "Work" },
@@ -63,27 +76,45 @@ export function Footer() {
             </p>
 
             {/* Social Links */}
-            <div className="mt-8 flex gap-4" role="list" aria-label="Social links">
-              <Link
-                href={siteConfig.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all"
-                aria-label="GitHub"
-                role="listitem"
-              >
-                <GithubIcon aria-label="GitHub" />
-              </Link>
-              <Link
-                href={siteConfig.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all"
-                aria-label="LinkedIn"
-                role="listitem"
-              >
-                <LinkedinIcon aria-label="LinkedIn" />
-              </Link>
+            <div className="mt-8 flex gap-3" role="list" aria-label="Social links">
+              {socialLinks.map((social) => {
+                const isSet = !social.href.includes("TODO");
+                const className =
+                  "flex h-11 w-11 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-all duration-300";
+
+                if (!isSet) {
+                  // URL not configured yet — show the icon but don't link to a 404
+                  return (
+                    <span
+                      key={social.label}
+                      role="listitem"
+                      title={`Add your ${social.label} URL in src/data/site.ts`}
+                      className={cn(className, "cursor-not-allowed opacity-40")}
+                      aria-disabled="true"
+                    >
+                      {social.icon}
+                    </span>
+                  );
+                }
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    role="listitem"
+                    aria-label={social.label}
+                    title={social.label}
+                    className={cn(
+                      className,
+                      "hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/5 hover:text-white"
+                    )}
+                  >
+                    {social.icon}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -160,19 +191,66 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, ease: [0.76, 0, 0.24, 1] }}
-          className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/10"
+          className="flex flex-col-reverse items-center justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row"
         >
           <p className="text-sm text-zinc-500">
-            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
+            reserved.
           </p>
 
-          <button
-            onClick={scrollToTop}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 hover:border-white/30 hover:text-white hover:bg-white/5 transition-all"
-            aria-label="Back to top"
-          >
-            <ArrowUp className="h-5 w-5" aria-hidden="true" />
-          </button>
+          <div className="flex items-center gap-5">
+            {/* Social links */}
+            <div className="flex items-center gap-2.5" role="list" aria-label="Social links">
+              {socialLinks.map((social) => {
+                const isSet = !social.href.includes("TODO");
+
+                if (!isSet) {
+                  return (
+                    <span
+                      key={social.label}
+                      role="listitem"
+                      title={`Add your ${social.label} URL in src/data/site.ts`}
+                      className="cursor-not-allowed text-zinc-600 opacity-50"
+                      aria-disabled="true"
+                    >
+                      {social.icon}
+                    </span>
+                  );
+                }
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="me noopener noreferrer"
+                    role="listitem"
+                    aria-label={social.label}
+                    title={social.label}
+                    className="text-zinc-400 transition-colors hover:text-white"
+                  >
+                    {social.icon}
+                  </a>
+                );
+              })}
+            </div>
+
+            <span
+              className="h-4 w-px bg-white/10"
+              aria-hidden="true"
+            />
+
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+              aria-label="Back to top"
+            >
+              Back to top
+              <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 transition-colors hover:border-white/30">
+                <ArrowUp className="h-4 w-4" aria-hidden="true" />
+              </span>
+            </button>
+          </div>
         </motion.div>
       </div>
     </footer>

@@ -16,24 +16,12 @@ const navLinks = [
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Single listener keeps scroll position + direction in sync.
-  // Deliberately does NOT use requestAnimationFrame — rAF is throttled in
-  // background tabs, which would leave the header stuck mid-transition.
+  // The header stays pinned and visible for the whole page — it only changes
+  // appearance (translucent white bar) once you start scrolling.
   useEffect(() => {
-    let lastY = window.scrollY;
-
-    const update = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      // Threshold avoids flicker from sub-pixel scroll jitter
-      if (y > lastY + 4) setHidden(true);
-      else if (y < lastY - 4) setHidden(false);
-      lastY = y;
-    };
-
+    const update = () => setScrolled(window.scrollY > 24);
     update();
     window.addEventListener("scroll", update, { passive: true });
     return () => window.removeEventListener("scroll", update);
@@ -51,14 +39,7 @@ export function Header() {
 
   return (
     <>
-      <header
-        className="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] will-change-transform"
-        style={{
-          transform: hidden && scrolled ? "translate3d(0,-130%,0)" : "translate3d(0,0,0)",
-          opacity: hidden && scrolled ? 0 : 1,
-          pointerEvents: hidden && scrolled ? "none" : "auto",
-        }}
-      >
+      <header className="fixed inset-x-0 top-0 z-50">
         {/* Rounded floating bar — white at 23% opacity */}
         <div
           className={cn(

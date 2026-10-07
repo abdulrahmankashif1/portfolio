@@ -4,18 +4,19 @@ export const siteConfig = {
   description: "Abdul Rahman — IT & Digital Media Professional. I design, develop and manage fast, SEO-ready e-commerce and business websites.",
   url: "https://abdulrahman.dev",
   /**
-   * Drop your photo at public/images/abdul-rahman.jpg and set this to true.
-   * While false, the About section shows an initials placeholder.
+   * Photo shown in the About section.
+   * Add a replacement at public/images/Abdul-Rehman.jpg — keep the same name.
    */
   photo: {
-    src: "/images/abdul-rahman.jpg",
-    enabled: false,
+    src: "/images/Abdul-Rehman.jpg",
+    enabled: true,
+    alt: "Abdul Rahman — IT & Digital Media Professional",
   },
   email: "abdulrahmankashif4@gmail.com",
-  location: "Remote · Worldwide",
+  location: "Lahore, Pakistan",
   social: {
-    github: "https://github.com/TODO",
-    linkedin: "https://linkedin.com/in/TODO",
+    github: "https://github.com/abdulrahmankashif1",
+    linkedin: "https://www.linkedin.com/in/TODO",
   },
   keywords: [
     "Abdul Rahman",

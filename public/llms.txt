@@ -52,8 +52,9 @@ Personal portfolio of Abdul Rahman, an IT & Digital Media Professional building 
 
 ## Contact
 - **Email**: abdulrahmankashif4@gmail.com
-- **Location**: Remote · Worldwide
+- **Location**: Lahore, Pakistan
 - **Availability**: Available for new projects
+- **GitHub**: https://github.com/abdulrahmankashif1
 
 ## Site Structure
 - Home: /

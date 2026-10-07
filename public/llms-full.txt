@@ -76,13 +76,7 @@ Tags: Vercel, Shopify, Git/GitHub, Domain/DNS, SSL, Monitoring
 
 ## Process
 
-**01 Discovery** — clarify goals, audience and scope; audit existing assets, research competitors, define a roadmap with realistic timelines. Deliverables: project brief, competitor audit, scope & timeline.
-
-**02 Design** — wireframes, UI systems and high-fidelity mockups; you approve the design before code is written. Deliverables: wireframes, UI design, design system.
-
-**03 Build** — clean, performant code with Next.js and React; e-commerce integration, SEO foundations, responsive testing. Deliverables: Next.js build, e-commerce setup, SEO foundations.
-
-**04 Launch & Support** — deployed to Vercel with preview URLs, custom domain, SSL and analytics; post-launch monitoring, handover training and ongoing support. Deliverables: Vercel deploy, domain & DNS, ongoing support.
+*(Section removed — no longer part of the site.)*
 
 ---
 
@@ -99,13 +93,15 @@ Tags: Vercel, Shopify, Git/GitHub, Domain/DNS, SSL, Monitoring
 
 ## About
 
-I'm Abdul Rahman, an IT & Digital Media Professional specialising in building fast, SEO-ready e-commerce and business websites.
+I'm Abdul Rahman, an IT & Digital Media Professional based in Lahore, Pakistan. I build fast, SEO-ready e-commerce and business websites.
 
 My work spans the full journey — design, development, graphics, video and deployment. I build websites in code, craft logos and brand kits in Photoshop and Illustrator, and edit video in Premiere Pro and After Effects.
 
-Whether you need a new e-commerce store, a Shopify build, brand assets, edited reels, technical troubleshooting or ongoing site management, I deliver work that looks sharp and performs.
+Whether you need a new store, a Shopify build, brand assets, edited reels or ongoing site management, I deliver work that looks sharp and performs.
 
-**Statistics**: 2 Featured Projects · 8+ Skills & Services
+**Statistics**: 4 Featured Projects · 25+ Skills & Services
+
+**Photo**: public/images/Abdul-Rehman.jpg
 
 ---
 
@@ -148,6 +144,6 @@ Yes. I handle domain registration or transfer, DNS configuration (A, CNAME, TXT,
 **Brand**: Abdul Rahman
 **Navigation**: Work, Services, About, FAQ, Contact
 **Services**: Web Development, E-commerce & Store Management, Shopify Store Setup, UI/UX & Web Design, Graphic Designing, Video Editing, SEO & Digital Content, Deployment & Technical Support
-**Contact**: abdulrahmankashif4@gmail.com, Remote · Worldwide
-**Social**: GitHub, LinkedIn (URLs marked TODO in src/data/site.ts)
+**Contact**: abdulrahmankashif4@gmail.com · Lahore, Pakistan
+**Social**: GitHub (https://github.com/abdulrahmankashif1), LinkedIn (URL marked TODO in src/data/site.ts)
 **Copyright**: © Abdul Rahman
