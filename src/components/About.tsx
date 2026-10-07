@@ -7,8 +7,12 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { siteConfig } from "@/data/site";
 
 /**
- * Counts 0 → target over `duration` ms the first time it scrolls into view.
- * Uses IntersectionObserver + rAF so it works the moment the user reaches it.
+ * Counts up to `to` when it scrolls into view.
+ *
+ * Important: the FINAL value is what renders on the server and on the first
+ * client render, so the number is never wrong (or invisible) if JavaScript
+ * is slow, blocked, or the observer never fires. Only once we know the
+ * element is actually on screen do we rewind to 0 and play the count-up.
  */
 function Counter({
   to,
@@ -20,26 +24,22 @@ function Counter({
   suffix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [value, setValue] = useState(0);
-  const done = useRef(false);
+  const [value, setValue] = useState(to);
+  const started = useRef(false);
   const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || prefersReducedMotion) return;
 
-    if (prefersReducedMotion) {
-      setValue(to);
-      return;
-    }
-
-    let safety: ReturnType<typeof setTimeout> | undefined;
     let frame = 0;
+    let safety: ReturnType<typeof setTimeout> | undefined;
 
     const run = () => {
-      if (done.current) return;
-      done.current = true;
+      if (started.current) return;
+      started.current = true;
 
+      setValue(0);
       const start = performance.now();
 
       const tick = (now: number) => {
@@ -54,7 +54,7 @@ function Counter({
       frame = requestAnimationFrame(tick);
 
       // Safety net: rAF is throttled in background tabs, which would
-      // otherwise leave the counter frozen mid-count.
+      // otherwise freeze the count part-way.
       safety = setTimeout(() => setValue(to), duration + 250);
     };
 
@@ -64,13 +64,15 @@ function Counter({
         observer.disconnect();
         run();
       },
-      { threshold: 0.4 }
+      // threshold 0 fires as soon as any part is visible, which is far more
+      // reliable than waiting for 40% of a small number to be on screen
+      { threshold: 0, rootMargin: "0px 0px -15% 0px" }
     );
 
     observer.observe(el);
 
-    // If it is already on screen at mount (e.g. reload mid-page) the
-    // observer may never fire — start immediately.
+    // Already on screen at mount (e.g. reload mid-page): the observer may
+    // not fire, so start straight away.
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       observer.disconnect();
@@ -85,7 +87,7 @@ function Counter({
   }, [to, duration, prefersReducedMotion]);
 
   return (
-    <span className="tabular-nums">
+    <span ref={ref} className="tabular-nums">
       {value}
       {suffix}
     </span>
@@ -220,27 +222,15 @@ export function About() {
               role="list"
               aria-label="Key statistics"
             >
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.1 + i * 0.1,
-                    ease: [0.76, 0, 0.24, 1],
-                  }}
-                  className="text-left"
-                  role="listitem"
-                >
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-left" role="listitem">
                   <div className="font-display text-5xl leading-none text-white md:text-6xl">
                     <Counter to={stat.value} suffix={stat.suffix} />
                   </div>
                   <p className="mt-2.5 text-xs uppercase tracking-[0.16em] text-zinc-500">
                     {stat.label}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
