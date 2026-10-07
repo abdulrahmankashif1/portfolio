@@ -240,32 +240,36 @@ Deploy to **Netlify** or **Vercel** — both work with zero config changes.
 
 ```bash
 cd portfolio
-git remote add origin https://github.com/YOUR_USERNAME/portfolio.git
+git remote add origin https://github.com/abdulrahmankashif1/portfolio.git
 git branch -M main
 git push -u origin main
 ```
 
-GitHub will ask for your username and a **Personal Access Token** instead of a
-password if you have 2FA on. Get a token at
-https://github.com/settings/tokens (scope: `repo`).
+GitHub asks for your username and a **Personal Access Token** instead of a
+password. Get a token at https://github.com/settings/tokens (scope: `repo`).
+
+> **Got `remote: Repository not found`?** The machine had credentials saved for
+> a *different* GitHub account, so git reused those silently. Force the right
+> account:
+>
+> ```bash
+> git remote set-url origin https://abdulrahmankashif1@github.com/abdulrahmankashif1/portfolio.git
+> git push -u origin main
+> ```
 
 **Step 3 — Connect to Netlify**
 
-1. Go to https://app.netlify.com/drop (or https://app.netlify.com)
+1. Go to https://app.netlify.com
 2. Sign up / sign in with your **GitHub** account
 3. Click **Add new site** → **Import an existing project**
 4. Pick your `portfolio` repo
-5. Netlify auto-detects Next.js. Verify:
-   - Build command: `npm run build`
-   - Publish directory: `.next`
+5. Netlify auto-detects Next.js from `netlify.toml` (build `npm run build`,
+   publish `.next`)
 6. Click **Deploy site**
-
-Your site will be live at `https://YOUR-SITE-NAME.netlify.app` in ~2 minutes.
 
 **Step 4 — Set your real domain**
 
-Netlify → **Domain settings** → **Add a custom domain**. DNS is handled for you
-if you use Netlify DNS.
+Netlify → **Domain settings** → **Add a custom domain**.
 
 **Every push from now on auto-deploys.** Just run:
 
