@@ -14,6 +14,16 @@ export const siteConfig = {
   },
   email: "abdulrahmankashif4@gmail.com",
   location: "Lahore, Pakistan",
+  /**
+   * Web3Forms — delivers submissions to the inbox behind siteConfig.email.
+   * The access key is public by design (that is how their client-side
+   * snippets work), so shipping it in the browser bundle is expected.
+   * Get or rotate a key at https://web3forms.com
+   */
+  form: {
+    endpoint: "https://api.web3forms.com/submit",
+    accessKey: "024715dc-3664-4804-887f-872816b57a41",
+  },
   social: {
     github: "https://github.com/abdulrahmankashif1",
     linkedin: "https://www.linkedin.com/in/TODO",

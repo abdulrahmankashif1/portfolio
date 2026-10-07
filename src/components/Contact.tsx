@@ -16,16 +16,21 @@ export function Contact() {
   });
   const [errors, setErrors] = useState<Partial<typeof formData>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle"
+  );
+  const [serverMessage, setServerMessage] = useState<string>("");
   const { toast } = useToast();
 
   const validateForm = () => {
     const newErrors: Partial<typeof formData> = {};
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email format";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Invalid email format";
     if (!formData.message.trim()) newErrors.message = "Message is required";
-    else if (formData.message.trim().length < 10) newErrors.message = "Message must be at least 10 characters";
+    else if (formData.message.trim().length < 10)
+      newErrors.message = "Message must be at least 10 characters";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -36,25 +41,53 @@ export function Contact() {
 
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    setServerMessage("");
 
     try {
-      // Replace with actual API call or Formspree/Resend integration
-      const response = await fetch("/api/contact", {
+      // Web3Forms wants multipart form data, not JSON
+      const payload = new FormData();
+      payload.append("access_key", siteConfig.form.accessKey);
+      payload.append("name", formData.name.trim());
+      payload.append("email", formData.email.trim());
+      payload.append("message", formData.message.trim());
+      // Honeypot — Web3Forms silently discards submissions that fill it in
+      payload.append("botcheck", "");
+
+      const response = await fetch(siteConfig.form.endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: payload,
       });
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", message: "" });
-        toast({ title: "Message sent!", description: "I'll get back to you soon." });
-      } else {
-        throw new Error("Failed to send");
+      let data: { success?: boolean; message?: string } = {};
+      try {
+        data = await response.json();
+      } catch {
+        // non-JSON error body — fall through to the generic message
       }
-    } catch {
+
+      if (!response.ok || data.success === false) {
+        throw new Error(data.message || "Failed to send");
+      }
+
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      toast({
+        title: "Message sent!",
+        description: "I'll get back to you soon.",
+        variant: "success",
+      });
+    } catch (error) {
       setSubmitStatus("error");
-      toast({ title: "Something went wrong", description: "Please try again or email me directly.", variant: "destructive" });
+      const detail =
+        error instanceof Error && error.message !== "Failed to send"
+          ? error.message
+          : "Please try again or email me directly.";
+      setServerMessage(detail);
+      toast({
+        title: "Something went wrong",
+        description: detail,
+        variant: "destructive",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -203,7 +236,30 @@ export function Contact() {
                 Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} noValidate className="space-y-5">
+              <form
+                  onSubmit={handleSubmit}
+                  noValidate
+                  action={siteConfig.form.endpoint}
+                  method="POST"
+                  className="space-y-5"
+                >
+                {/* Web3Forms credentials — hidden so the form still works
+                    as a plain POST if JavaScript is unavailable */}
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value={siteConfig.form.accessKey}
+                />
+                {/* Honeypot: hidden from humans, Web3Forms drops bots that fill it */}
+                <input
+                  type="text"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                />
+
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-zinc-300 mb-2">
@@ -340,19 +396,31 @@ export function Contact() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="mt-4 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 flex items-center gap-2"
+                      className="mt-4 flex items-start gap-2 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-red-400"
                       role="alert"
                     >
-                      <svg className="h-5 w-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <svg className="mt-0.5 h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                       </svg>
-                      Something went wrong. Please try again or email directly.
+                      <span>
+                        Something went wrong.{" "}
+                        {serverMessage && <>{serverMessage} </>}
+                        You can also email me directly at{" "}
+                        <a
+                          href={`mailto:${siteConfig.email}`}
+                          className="underline underline-offset-2"
+                        >
+                          {siteConfig.email}
+                        </a>
+                        .
+                      </span>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <p className="text-xs text-zinc-600 text-center">
-                  By submitting, you agree to receive email communication about your project.
+                <p className="text-center text-xs text-zinc-600">
+                  By submitting, you agree to receive an email reply about your
+                  project.
                 </p>
               </form>
             </div>
