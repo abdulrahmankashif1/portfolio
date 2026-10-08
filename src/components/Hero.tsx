@@ -344,15 +344,14 @@ export function Hero() {
         <span aria-hidden="true" className="hidden lg:block" />
       </div>
 
-      {/* Scroll indicator — direct child of the section so it anchors to the
-          viewport bottom, landing in the gap between the CTA row and the
-          marquee. Clear of the copy column on the left and the orb on the right. */}
+      {/* Scroll indicator — centred on the hero, anchored to the section so
+          it sits in the gap between the content and the marquee. */}
       <motion.a
         href="#work"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.95 }}
-        className="group absolute bottom-28 left-6 hidden flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-white lg:left-8 lg:flex xl:left-10"
+        className="group absolute bottom-28 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2.5 text-zinc-500 transition-colors hover:text-white lg:flex"
         aria-label="Scroll to selected work"
       >
         <motion.span
