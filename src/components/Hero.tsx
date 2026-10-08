@@ -340,27 +340,32 @@ export function Hero() {
           </MagneticButton>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.a
-          href="#work"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.95 }}
-          className="group absolute bottom-28 right-0 hidden flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-white lg:flex"
-          aria-label="Scroll to selected work"
-        >
-          <span className="text-[10px] uppercase tracking-[0.28em] [writing-mode:vertical-rl]">
-            Scroll
-          </span>
-          <motion.span
-            animate={prefersReducedMotion ? {} : { y: [0, 7, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/15 transition-colors group-hover:border-white/40"
-          >
-            <ArrowDown className="h-3.5 w-3.5" aria-hidden="true" />
-          </motion.span>
-        </motion.a>
+        {/* Scroll indicator lives outside the copy column — see below */}
+        <span aria-hidden="true" className="hidden lg:block" />
       </div>
+
+      {/* Scroll indicator — direct child of the section so it anchors to the
+          viewport bottom, landing in the gap between the CTA row and the
+          marquee. Clear of the copy column on the left and the orb on the right. */}
+      <motion.a
+        href="#work"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.95 }}
+        className="group absolute bottom-28 left-6 hidden flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-white lg:left-8 lg:flex xl:left-10"
+        aria-label="Scroll to selected work"
+      >
+        <motion.span
+          animate={prefersReducedMotion ? {} : { y: [0, 7, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-[#0a0a0a]/60 backdrop-blur-sm transition-colors group-hover:border-white/50 group-hover:bg-white/5"
+        >
+          <ArrowDown className="h-4 w-4" aria-hidden="true" />
+        </motion.span>
+        <span className="text-[10px] uppercase tracking-[0.28em] [writing-mode:vertical-rl]">
+          Scroll
+        </span>
+      </motion.a>
 
       {/* Marquee strip */}
       <div
