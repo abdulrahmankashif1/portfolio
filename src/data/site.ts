@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Abdul Rahman",
   title: "IT & Digital Media Professional",
   description: "Abdul Rahman — IT & Digital Media Professional. I design, develop and manage fast, SEO-ready e-commerce and business websites.",
-  url: "https://abdulrahman.dev",
+  url: "https://ark-sooty.vercel.app",
   /**
    * Photo shown in the About section.
    * Add a replacement at public/images/Abdul-Rehman.jpg — keep the same name.
