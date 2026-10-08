@@ -283,7 +283,7 @@ export function Hero() {
         {/* Headline */}
         <h1
           id="hero-heading"
-          className="font-display text-[clamp(2.75rem,9vw,7.5rem)] uppercase leading-[0.92] tracking-tight text-white"
+          className="font-display text-[clamp(2.5rem,7.2vw,6.5rem)] uppercase leading-[0.92] tracking-tight text-white"
         >
           <span className="block overflow-hidden pb-[0.06em]">
             <motion.span

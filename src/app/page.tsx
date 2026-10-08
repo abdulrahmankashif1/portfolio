@@ -7,21 +7,28 @@ import { About } from "@/components/About";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { SideNav } from "@/components/SideNav";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main id="main-content" className="relative z-[2]">
-        <Hero />
-        <SelectedWork />
-        <Services />
-        <TechStack />
-        <About />
-        <FAQ />
-        <Contact />
-      </main>
-      <Footer />
+      <SideNav />
+
+      {/* Right rail reserved for the fixed side nav, so no section's
+          content can ever slide underneath it. */}
+      <div className="lg:pr-44 xl:pr-48">
+        <main id="main-content" className="relative z-[2]">
+          <Hero />
+          <SelectedWork />
+          <Services />
+          <TechStack />
+          <About />
+          <FAQ />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
